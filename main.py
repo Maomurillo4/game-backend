@@ -50,9 +50,9 @@ class SaveState(SQLModel, table=True):
     score: int
 
 app = FastAPI()
-sqlite_file_name = "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
-engine = create_engine(sqlite_url)
+DATABASE_URL = os.getenv("DATABASE_URL", "")
+assert DATABASE_URL, "DATABASE_URL not set in environment"
+engine = create_engine(DATABASE_URL)
 ph = PasswordHasher()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
