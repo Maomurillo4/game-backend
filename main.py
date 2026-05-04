@@ -25,7 +25,6 @@ class UserLogin(BaseModel):
     username: str
     password: str
 
-# Nuevo: modelo de respuesta sin password
 class UserResponse(BaseModel):
     id: int
     username: str
